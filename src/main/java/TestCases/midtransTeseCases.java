@@ -137,4 +137,34 @@ public class midtransTeseCases {
 
 
     }
+    @Test(priority = 10)
+    public void PromoCodeAmountCheck()
+    {
+        PromoCode.PromoCodeAmount();
+    }
+    @Test(priority = 11)
+    public void EnteringCardDetails()
+    {
+        // DebitClass.SelectingCreditCardAsAPayment();
+        DebitClass.EnteringCreditCardDetails();
+    }
+
+    @Test(priority = 12)
+    public void ActionAfterClickingOnPayNowButton()
+    {
+        DebitClass.CheckingPayNowButtonWorking();
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//label[text()='Merchant Name:']"));
+        Methods.holdExecutionForSeconds(2);
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//label[text()='Amount:']"));
+        Methods.holdExecutionForSeconds(2);
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//label[text()='Transaction Time:']"));
+        Methods.holdExecutionForSeconds(2);
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//label[text()='Card Number:']"));
+        Methods.holdExecutionForSeconds(2);
+    }
+
 }
