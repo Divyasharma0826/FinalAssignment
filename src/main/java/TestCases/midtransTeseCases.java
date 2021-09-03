@@ -65,4 +65,41 @@ public class midtransTeseCases {
         Methods.holdExecutionForSeconds(2);
 
     }
+    @Test(priority = 4)
+    public void FillingDetails() {
+
+        driver.get(MidTranBase.properties.getProperty("url"));
+        Checkout.CheckoutPopDetails();
+        Methods.holdExecutionForSeconds(3);
+
+    }
+    //
+    @Test(priority = 5)
+    public void CheckOutButton() {
+        Checkout.ClickingCheckOutButton();
+        Methods.holdExecutionForSeconds(2);
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//p[text()='Order Summary']"));
+        Methods.holdExecutionForSeconds(2);
+    }
+    //
+    @Test(priority = 6)
+    public void OrderSummaryProductDetail() {
+        driver.get(MidTranBase.properties.getProperty("url"));
+        Methods.holdExecutionForSeconds(2);
+        OrderSummary.orderSummaryElement();
+        Methods.holdExecutionForSeconds(2);
+        driver.switchTo().frame(0);
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//td[@class='table-amount text-body']"));
+        Assert.assertTrue(Methods.isDisplayedElement("//span[@class='item-name']"));
+    }
+    //
+    @Test(priority = 7)
+    public void ContinueButton() {
+        driver.get(MidTranBase.properties.getProperty("url"));
+        OrderSummary.ClickingOnContinueButton();
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//p[@class='text-page-title-content']"));
+    }
 }
