@@ -166,5 +166,29 @@ public class midtransTeseCases {
         Assert.assertTrue(Methods.isDisplayedElement("//label[text()='Card Number:']"));
         Methods.holdExecutionForSeconds(2);
     }
+    @Test(priority = 14)
+    public  void clickOkWithRightOtp()
+    {
+        driver.get(midTranBase.properties.getProperty("url"));
+
+        Payment.ClickOnOkButton();
+
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//div[@class='trans-status trans-success']"));
+        Methods.holdExecutionForSeconds(2);
+
+    }
+    @Test(priority = 13)
+    public void ClickOkButtonWrongPasskey()
+    {
+        driver.get(MidTranBase.properties.getProperty("url"));
+        Payment.ClickOnOkButtonWithWrongOtp();
+
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//div[@class='final-panel failed']//div[@class='text-failed text-bold']"));
+        Methods.holdExecutionForSeconds(2);
+    }
 
 }
