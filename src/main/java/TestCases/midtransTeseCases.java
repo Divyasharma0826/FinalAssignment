@@ -65,6 +65,7 @@ public class midtransTeseCases {
         Methods.holdExecutionForSeconds(2);
 
     }
+
     @Test(priority = 4)
     public void FillingDetails() {
 
@@ -73,6 +74,7 @@ public class midtransTeseCases {
         Methods.holdExecutionForSeconds(3);
 
     }
+
     //
     @Test(priority = 5)
     public void CheckOutButton() {
@@ -82,6 +84,7 @@ public class midtransTeseCases {
         Assert.assertTrue(Methods.isDisplayedElement("//p[text()='Order Summary']"));
         Methods.holdExecutionForSeconds(2);
     }
+
     //
     @Test(priority = 6)
     public void OrderSummaryProductDetail() {
@@ -94,6 +97,7 @@ public class midtransTeseCases {
         Assert.assertTrue(Methods.isDisplayedElement("//td[@class='table-amount text-body']"));
         Assert.assertTrue(Methods.isDisplayedElement("//span[@class='item-name']"));
     }
+
     //
     @Test(priority = 7)
     public void ContinueButton() {
@@ -101,5 +105,36 @@ public class midtransTeseCases {
         OrderSummary.ClickingOnContinueButton();
         Methods.holdExecutionForSeconds(2);
         Assert.assertTrue(Methods.isDisplayedElement("//p[@class='text-page-title-content']"));
+    }
+
+    @Test(priority = 8)
+    public void VisibilityOfCheckoutPopUp() {
+        driver.get(MidTranBase.properties.getProperty("url"));
+        Checkout.CheckoutPopUpElementsVisibility();
+        Assert.assertTrue(Methods.isDisplayedElement("//td[@class='input-label'][normalize-space()='Name']"));
+        Methods.holdExecutionForSeconds(1);
+        Assert.assertTrue(Methods.isDisplayedElement("//td[@class='input-label'][normalize-space()='Email']"));
+        Methods.holdExecutionForSeconds(1);
+        Assert.assertTrue(Methods.isDisplayedElement("//td[@class='input-label'][normalize-space()='Phone no']"));
+        Methods.holdExecutionForSeconds(1);
+        Assert.assertTrue(Methods.isDisplayedElement("//td[@class='input-label'][normalize-space()='City']"));
+        Methods.holdExecutionForSeconds(1);
+        Assert.assertTrue(Methods.isDisplayedElement("//td[@class='input-label'][normalize-space()='Address']"));
+        Methods.holdExecutionForSeconds(1);
+        Assert.assertTrue(Methods.isDisplayedElement("//td[@class='input-label'][normalize-space()='Postal Code']"));
+        Methods.holdExecutionForSeconds(1);
+    }
+
+
+    @Test(priority = 9)
+    public void CheckingSelectingPaymentOptionRedirectToCardDetailScreen() {
+        DebitClass.SelectingCreditCardAsAPayment();
+        Assert.assertTrue(Methods.isDisplayedElement("//input[@name='cardnumber']"));
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//input[@placeholder='MM / YY']"));
+        Methods.holdExecutionForSeconds(2);
+        Assert.assertTrue(Methods.isDisplayedElement("//input[@placeholder='123']"));
+
+
     }
 }
